@@ -6,23 +6,20 @@ public class Cicle {
         System.out.println();
 
         int x = 6;
-        int y = -7;
-        while(x > y) {
+        while(x > -7) {
             System.out.print(x + " ");
-            x = x - 2;
+            x -= 2;
         }
         System.out.println();
 
         int k = 10;
-        int result = 0;
+        int sum = 0;
         do {
             if(k % 2 != 0) {
-                result += k; 
-            }
-            else {
+                sum += k; 
             }
             k++;
         } while(k < 21);
-        System.out.println("Результат суммы нечетных чисел от 10 до 20 = " + result);
+        System.out.println("Результат суммы нечетных чисел от 10 до 20 = " + sum);
     }
 }
