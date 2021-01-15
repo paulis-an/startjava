@@ -1,38 +1,32 @@
-import java.util.Scanner;
-
 public class ConditionalStatemen {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-
-        System.out.println("Укажите ваш возраст.");
-        int age = scan.nextInt();
-        if (age > 20) {
-            System.out.println("Вы можете продолжить. Укажите ваш пол.");
+        int age = 22;
+        if(age > 20) {
+            System.out.println("Возраст - " + age);
         }
-        String gender = scan.next();
-        if (gender != "male" || gender != "m" || gender != "м" || gender != "муж") {
-            System.out.println("Продолжайте");
+        String gender = "Male";
+        if(gender == "Male") {
+            System.out.println("Пол мужской");
         }
-        System.out.println("Укажите ваш рост в формате (м,см)");
-        double growth = scan.nextDouble();
-        if (growth < 1.80) {
-            System.out.println("Ваш рост меньше 180см.");
+        if(gender != "Male") {
+            System.out.println("Пол женский");
         }
-        else {
-            System.out.println("Ваш рост больше 180см.");
-        }
-        System.out.println("Укажите ваше имя.");
-        String name = scan.nextLine();
-        /*
-        if (c == 'M') {
-            System.out.println("Ваше имя на M");
-        }
-        else if (c == 'I') {
-            System.out.println("Ваше имя на I");
+        double growth = 1.75;
+        if(growth < 1.80) {
+            System.out.println("Ваш рост меньше 180см");
         }
         else {
-            System.out.println("Привет " + name);
+            System.out.println("Ваш рост больше 180см");
         }
-        */
+        char firstLetter = 'M';
+        if(firstLetter == 'M') {
+            System.out.println("Имя начинается на " + firstLetter);
+        }
+        else if(firstLetter == 'I') {
+            System.out.println("Имя начинается на I");
+        }
+        else {
+            System.out.println("Имя начинается с другой буквы");
+        }
     }
 }
