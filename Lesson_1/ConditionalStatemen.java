@@ -4,6 +4,7 @@ public class ConditionalStatemen {
         if(age > 20) {
             System.out.println("Возраст - " + age);
         }
+
         String gender = "Male";
         if(gender == "Male") {
             System.out.println("Пол мужской");
@@ -11,6 +12,7 @@ public class ConditionalStatemen {
         if(gender != "Male") {
             System.out.println("Пол женский");
         }
+
         double growth = 1.75;
         if(growth < 1.80) {
             System.out.println("Ваш рост меньше 180см");
@@ -18,14 +20,13 @@ public class ConditionalStatemen {
         else {
             System.out.println("Ваш рост больше 180см");
         }
+
         char firstLetter = 'M';
         if(firstLetter == 'M') {
             System.out.println("Имя начинается на " + firstLetter);
-        }
-        else if(firstLetter == 'I') {
+        } else if(firstLetter == 'I') {
             System.out.println("Имя начинается на I");
-        }
-        else {
+        } else {
             System.out.println("Имя начинается с другой буквы");
         }
     }
