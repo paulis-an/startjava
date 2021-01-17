@@ -1,12 +1,10 @@
 public class Symbols {
     public static void main(String[] args) {
-        char c = 9398;
-        while(c < 10179) {
+        for(char c = 9398; c < 10179; c++) {
             System.out.print(c + " ");
             if(c % 10 == 0) {
-            System.out.println();
+                System.out.println();
             }
-            c++;
         }
     }
 }
