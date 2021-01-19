@@ -3,8 +3,24 @@ public class Calculator {
     int secondNumber;
     String mathSign;
 
-    public void operation(String s) {
-        switch(s) {
+    public int getFirstNumber() {
+        return firstNumber;
+    }
+
+    public void setFirstNumber(int firstNumber) {
+        this.firstNumber = firstNumber;
+    }
+
+    public int getSecondNumber() {
+        return secondNumber;
+    }
+
+    public void setSecondNumber(int secondNumber) {
+        this.secondNumber = secondNumber;
+    }
+
+    public void run(int firstNumber, int secondNumber) {
+        switch(mathSign) {
             case "+":   
                 System.out.println("Сумма чисел = " + (firstNumber + secondNumber));
                 break;
@@ -40,6 +56,9 @@ public class Calculator {
                 } else {
                     System.out.println("Деление на 0 запрещено");
                 }
+                break;
+            default:
+            System.out.println("Вы ввели неправильный знак математической операции");
         }
     }
 }
