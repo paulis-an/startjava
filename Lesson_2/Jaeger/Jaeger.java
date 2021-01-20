@@ -8,41 +8,27 @@ class Jaeger {
     public void setName(String name) {
         this.name = name;
     }
-    public String getName() {
-        return name;
-    }
 
     public void setMark(String mark) {
         this.mark = mark;
-    }
-    public String getMark() {
-        return mark;
     }
 
     public void setWeight(double weight) {
         this.weight = weight;
     }
-    public double getWeight() {
-        return weight;
-    }
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-    public int getSpeed() {
-        return speed;
     }
 
     public void setArmor(int armor) {
         this.armor = armor;
     }
-    public int getArmor() {
-        return armor;
-    }
 
     public void run() {
         System.out.println("Робот " + name + " - может бегать");
     }
+
     public void shoot() {
         System.out.println("Робот " + name + " - может стрелять");
     }
@@ -55,7 +41,11 @@ class Jaeger {
         System.out.println("Робот " + name + " - может прыгать");
     }
 
-    public void call(String name, String mark, double weight, int speed, int armor) {
-        System.out.println("Название робота: " + name + " Модель: " + mark + " Вес: " + weight + " Скорость: " + " Броня: " + armor);
+    public String heading() {
+        return "Название робота:     Модель:      Вес:    Скорость:  Броня:";
+    }
+
+    public String toString() {
+        return name + "        " + mark + "       " + weight + "      " +speed + "          " + armor;
     }
 }

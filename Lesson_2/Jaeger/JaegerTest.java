@@ -9,12 +9,10 @@ class JaegerTest {
         j1.setSpeed(7);
         j1.setArmor(6);
 
-        j1.call(j1.getName(), j1.getMark(), j1.getWeight(), j1.getSpeed(), j1.getArmor());
-
+        System.out.println(j1.heading());
+        System.out.println(j1.toString());
         j1.run();
-
         j1.shoot();
-
         j1.scan();
 
         System.out.println();
@@ -25,12 +23,10 @@ class JaegerTest {
         j2.setSpeed(10);
         j2.setArmor(9);
 
-        j2.call(j2.getName(), j2.getMark(), j2.getWeight(), j2.getSpeed(), j2.getArmor());
-
+        System.out.println(j2.heading());
+        System.out.println(j2.toString());
         j2.run();
-
         j2.shoot();
-
         j2.jump();
     }
 }
