@@ -22,7 +22,6 @@ public class CalculatorTest {
                     if (answer.equals("нет") || answer.equals("да")) {
                         break;
                     }
-                
             }
         }
     }
