@@ -1,25 +1,17 @@
 public class Calculator {
-    int firstNumber;
-    int secondNumber;
+    private int firstNumber;
+    private int secondNumber;
     String mathSign;
-
-    public int getFirstNumber() {
-        return firstNumber;
-    }
 
     public void setFirstNumber(int firstNumber) {
         this.firstNumber = firstNumber;
-    }
-
-    public int getSecondNumber() {
-        return secondNumber;
     }
 
     public void setSecondNumber(int secondNumber) {
         this.secondNumber = secondNumber;
     }
 
-    public void run(int firstNumber, int secondNumber) {
+    public void calculate() {
         switch(mathSign) {
             case "+":   
                 System.out.println("Сумма чисел = " + (firstNumber + secondNumber));
@@ -58,7 +50,7 @@ public class Calculator {
                 }
                 break;
             default:
-            System.out.println("Вы ввели неправильный знак математической операции");
+                System.out.println("Вы ввели неправильный знак математической операции");
         }
     }
 }
