@@ -10,7 +10,7 @@ class JaegerTest {
         j1.setArmor(6);
 
         System.out.println(j1.heading());
-        System.out.println(j1.toString());
+        System.out.println(j1);
         j1.run();
         j1.shoot();
         j1.scan();
@@ -24,7 +24,7 @@ class JaegerTest {
         j2.setArmor(9);
 
         System.out.println(j2.heading());
-        System.out.println(j2.toString());
+        System.out.println(j2);
         j2.run();
         j2.shoot();
         j2.jump();

@@ -42,10 +42,10 @@ class Jaeger {
     }
 
     public String heading() {
-        return "Название робота:     Модель:      Вес:    Скорость:  Броня:";
+        return "Название робота:\tМодель:\tВес:\tСкорость:\tБроня:";
     }
 
     public String toString() {
-        return name + "        " + mark + "       " + weight + "      " +speed + "          " + armor;
+        return name + "\t\t" + mark + "\t" + weight + "\t" + speed + "\t\t" + armor;
     }
 }
