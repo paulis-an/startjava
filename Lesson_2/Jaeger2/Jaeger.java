@@ -4,7 +4,8 @@ class Jaeger {
     private double weight;
     private int speed;
     private int armor;
-    
+    private String country;
+    //конструктор
     public Jaeger(String name, String mark, double weight, int speed, int armor) {
         this.name = name;
         this.mark = mark;
@@ -12,18 +13,14 @@ class Jaeger {
         this.speed = speed;
         this.armor = armor;
     }
-    
-    // Добавил страну производства. Реализовал через setter
-    private String country;
 
     public void setCountry(String country) {
         this.country = country;
     }
-
+    //методы 
     public void produce() {
         System.out.println("Страна производства: " + country);
     }
-
     
     public void run() {
         System.out.println("Робот " + name + " - может бегать");
