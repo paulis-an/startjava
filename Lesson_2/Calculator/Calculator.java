@@ -1,7 +1,7 @@
 public class Calculator {
     private int firstNumber;
     private int secondNumber;
-    String mathSign;
+    private String mathSign;
 
     public void setFirstNumber(int firstNumber) {
         this.firstNumber = firstNumber;
@@ -9,6 +9,10 @@ public class Calculator {
 
     public void setSecondNumber(int secondNumber) {
         this.secondNumber = secondNumber;
+    }
+
+    public void setMathSign(String mathSign) {
+        this.mathSign = mathSign;
     }
 
     public void calculate() {
@@ -54,5 +58,3 @@ public class Calculator {
         }
     }
 }
-
-

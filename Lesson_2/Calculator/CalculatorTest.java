@@ -10,16 +10,16 @@ public class CalculatorTest {
             System.out.println("Введите первое число:");
             calc.setFirstNumber(scan.nextInt());
             System.out.println("Введите знак математической операции: + - * / ^ %");
-            calc.mathSign = scan.next();
+            calc.setMathSign(scan.next());
             System.out.println("Введите второе число:");
             calc.setSecondNumber(scan.nextInt());
 
             calc.calculate();
 
-            while (!answer.equals("да") || !answer.equals("нет")) {
-                System.out.println("Хотите продолжить вычисления? [да/нет]:");
-                answer = scan.next();
-                    if (answer.equals("нет") || answer.equals("да")) {
+            while(true) {
+                    System.out.println("Хотите продолжить вычисления? [да/нет]:");
+                    answer = scan.next();
+                    if(answer.equals("да") || answer.equals("нет")) {
                         break;
                     }
             }
