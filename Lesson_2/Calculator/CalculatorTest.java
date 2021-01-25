@@ -16,13 +16,11 @@ public class CalculatorTest {
 
             calc.calculate();
 
-            while(true) {
+            do {
                     System.out.println("Хотите продолжить вычисления? [да/нет]:");
                     answer = scan.next();
-                    if(answer.equals("да") || answer.equals("нет")) {
-                        break;
-                    }
-            }
+            } while(!answer.equals("да") && !answer.equals("нет"));
         }
     }
 }
+
