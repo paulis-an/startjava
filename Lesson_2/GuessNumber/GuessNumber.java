@@ -18,7 +18,7 @@ public class GuessNumber {
     public void start() {
         guessNumber = random.nextInt(100);
         try {
-            while (true) {
+            while(true) {
                 attempt++;
                 System.out.println("Попытка № " + attempt + " игрока - " + player1.getName());
                 System.out.println("Введите Число");
@@ -27,7 +27,7 @@ public class GuessNumber {
                     System.out.println("Выиграл " + player1.getName());
                     attempt = 0;
                     break;
-                } else if (inputNumber1 > guessNumber) {
+                } else if(inputNumber1 > guessNumber) {
                     System.out.println("Введенное вами число больше того, что загадал компьютер");
 
                 } else {
@@ -36,17 +36,17 @@ public class GuessNumber {
                 System.out.println("Попытка № " + attempt + " игрока - " + player2.getName());
                 System.out.println("Введите Число");
                 int inputNumber2 = scanner.nextInt();
-                if (inputNumber2 == guessNumber) {
+                if(inputNumber2 == guessNumber) {
                     System.out.println("Выиграл " + player2.getName());
                     attempt = 0;
                     break;
-                } else if (inputNumber2 > guessNumber) {
+                } else if(inputNumber2 > guessNumber) {
                     System.out.println("Введенное вами число больше того, что загадал компьютер");
-                } else {
+                } else{
                     System.out.println("Введенное вами число меньше того, что загадал компьютер");
                 }
             }
-        } catch (InputMismatchException e) {
+        } catch(InputMismatchException e) {
             System.out.println("Ошибка ввода числа");
         }
     }
