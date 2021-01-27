@@ -6,7 +6,7 @@ public class GuessNumber {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
     private int guessNumber;
-    private int attempt = 0;
+    private int attempt;
     private Player player1;
     private Player player2;
 
@@ -16,7 +16,7 @@ public class GuessNumber {
     }
 
     public void start() {
-        guessNumber = random.nextInt(100);
+        guessNumber = random.nextInt(101);
         try {
             while(true) {
                 attempt++;
@@ -29,10 +29,10 @@ public class GuessNumber {
                     break;
                 } else if(inputNumber1 > guessNumber) {
                     System.out.println("Введенное вами число больше того, что загадал компьютер");
-
                 } else {
                     System.out.println("Введенное вами число меньше того, что загадал компьютер");
                 }
+                
                 System.out.println("Попытка № " + attempt + " игрока - " + player2.getName());
                 System.out.println("Введите Число");
                 int inputNumber2 = scanner.nextInt();
@@ -42,7 +42,7 @@ public class GuessNumber {
                     break;
                 } else if(inputNumber2 > guessNumber) {
                     System.out.println("Введенное вами число больше того, что загадал компьютер");
-                } else{
+                } else {
                     System.out.println("Введенное вами число меньше того, что загадал компьютер");
                 }
             }
