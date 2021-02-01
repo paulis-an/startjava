@@ -4,38 +4,42 @@ public class Calculator {
     private int firstNumber;
     private int secondNumber;
     private String mathSign;
+    String mathExpression;
 
-    public Calculator(String mathSign, int firstNumber, int secondNumber) {
-        this.mathSign = mathSign;
-        this.firstNumber = firstNumber;
-        this.secondNumber = secondNumber;
+    public Calculator(String mathExpression) {
+        this.mathExpression = mathExpression;
+        String[] symbol = mathExpression.replaceAll(" ", "").split("[+, *, /, %, ^, -]");
+        mathSign = mathExpression.replaceAll(" ", "").replaceAll("[0-9]", "");
+        firstNumber = Integer.parseInt(symbol[0]);
+        secondNumber = Integer.parseInt(symbol[1]);
     }
 
-    public String calculate() {
+    public int calculate() {
+        int value = 0;
         switch (mathSign) {
             case "+":
-                return "Сумма чисел = " + (firstNumber + secondNumber);
+                value = firstNumber + secondNumber;
+                break;
             case "-":
-                return "Разность чисел = " + (firstNumber - secondNumber);
+                value = firstNumber - secondNumber;
+                break;
             case "*":
-                return "Произведение чисел = " + (firstNumber * secondNumber);
+                value = firstNumber * secondNumber;
+                break;
             case "/":
-                if (secondNumber != 0) {
-                    return "Деление числа " + firstNumber + " на число " + secondNumber + " = " + ((double) firstNumber / (double) secondNumber);
-                } else {
-                    return "Деление на 0 запрещено";
-                }
+                value = firstNumber / secondNumber;
+                break;
             case "^":
-                return "Число " + firstNumber + " в степени " + secondNumber + " = " + Math.pow(firstNumber, secondNumber);
+                value = (int) Math.pow(firstNumber, secondNumber);
+                break;
             case "%":
-                if (secondNumber != 0) {
-                    return "Остаток от деления числа " + firstNumber + " на число " + secondNumber + " = " + (firstNumber % secondNumber);
-                } else {
-                    return "Деление на 0 запрещено";
-                }
+                value = firstNumber % secondNumber;
+                break;
             default:
-                return "Вы ввели неправильный знак математической операции";
+                System.out.println("Вы ввели неправильный знак математической операции");
+                break;
         }
+        return value;
     }
 }
 

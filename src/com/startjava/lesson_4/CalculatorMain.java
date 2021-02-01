@@ -10,18 +10,14 @@ public class CalculatorMain {
         while (answer.equals("да")) {
             System.out.println("Введите математическое выражение: ");
             try {
-                String mathExpression = scan.nextLine();
-                String[] symbol = mathExpression.replaceAll(" ", "").split("[+, *, /, %, ^, -]");
-                String mathSign = mathExpression.replaceAll(" ", "").replaceAll("[0-9]", "");
-                int firstNumber = Integer.parseInt(symbol[0]);
-                int secondNumber = Integer.parseInt(symbol[1]);
-                Calculator calc = new Calculator(mathSign, firstNumber, secondNumber);
+                Calculator calc = new Calculator(scan.nextLine());
 
-                System.out.println(calc.calculate());
+                System.out.println("Ответ = " + calc.calculate());
+            } catch (ArithmeticException e) {
+                System.out.println("Деление на 0 запрещено");
             } catch (NumberFormatException e) {
                 System.out.println("Вы ввели неправильное выражение");
             }
-
             do {
                 System.out.println("Хотите продолжить вычисления? [да/нет]:");
                 answer = scan.nextLine();
