@@ -1,60 +1,41 @@
 package com.startjava.lesson_4;
 
-import java.util.Arrays;
-
 public class Calculator {
     private int firstNumber;
     private int secondNumber;
-    private String mathExpression;
+    private String mathSign;
 
-    public void setFirstNumber(int firstNumber) {
+    public Calculator(String mathSign, int firstNumber, int secondNumber) {
+        this.mathSign = mathSign;
         this.firstNumber = firstNumber;
-    }
-
-    public void setSecondNumber(int secondNumber) {
         this.secondNumber = secondNumber;
     }
 
-    public Calculator(String mathExpression) {
-        this.mathExpression = mathExpression;
-    }
-
-    public void calculate() {
-        try {
-            String symbol = mathExpression.replaceAll(" ", "");
-            int[] numbers = Arrays.stream(symbol.split("[+, *, /, %, ^, -]")).mapToInt(Integer::parseInt).toArray();
-            setFirstNumber(numbers[0]);
-            setSecondNumber(numbers[1]);
-
-            if (symbol.contains("+")) {
-                System.out.println("Сумма чисел = " + (firstNumber + secondNumber));
-            } else if (symbol.contains("-")) {
-                System.out.println("Разность чисел = " + (firstNumber - secondNumber));
-            } else if (symbol.contains("*")) {
-                System.out.println("Произведение чисел = " + (firstNumber * secondNumber));
-            } else if (symbol.contains("/")) {
+    public String calculate() {
+        switch (mathSign) {
+            case "+":
+                return "Сумма чисел = " + (firstNumber + secondNumber);
+            case "-":
+                return "Разность чисел = " + (firstNumber - secondNumber);
+            case "*":
+                return "Произведение чисел = " + (firstNumber * secondNumber);
+            case "/":
                 if (secondNumber != 0) {
-                    System.out.println("Деление числа " + firstNumber + " на число " + secondNumber + " = " + (firstNumber / secondNumber));
+                    return "Деление числа " + firstNumber + " на число " + secondNumber + " = " + ((double) firstNumber / (double) secondNumber);
                 } else {
-                    System.out.println("Деление на 0 запрещено");
+                    return "Деление на 0 запрещено";
                 }
-            } else if (symbol.contains("^")) {
-                int exp = 1;
-                for (int i = 0; i < secondNumber; i++) {
-                    exp *= firstNumber;
-                }
-                System.out.println("Число " + firstNumber + " в степени " + secondNumber + " = " + exp);
-            } else if (symbol.contains("%")) {
+            case "^":
+                return "Число " + firstNumber + " в степени " + secondNumber + " = " + Math.pow(firstNumber, secondNumber);
+            case "%":
                 if (secondNumber != 0) {
-                    System.out.println("Остаток от деления числа " + firstNumber + " на число " + secondNumber + " = " + (firstNumber % secondNumber));
+                    return "Остаток от деления числа " + firstNumber + " на число " + secondNumber + " = " + (firstNumber % secondNumber);
                 } else {
-                    System.out.println("Деление на 0 запрещено");
+                    return "Деление на 0 запрещено";
                 }
-            } else {
-                System.out.println("Вы ввели неправильный знак математической операции");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Вы ввели неправильное выражение");
+            default:
+                return "Вы ввели неправильный знак математической операции";
         }
     }
 }
+
