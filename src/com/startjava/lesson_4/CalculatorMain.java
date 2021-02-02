@@ -12,8 +12,6 @@ public class CalculatorMain {
             try {
                 Calculator calc = new Calculator(scan.nextLine());
                 System.out.println("Ответ = " + calc.calculate());
-            } catch (ArithmeticException e) {
-                System.out.println("Деление на 0 запрещено");
             } catch (NumberFormatException e) {
                 System.out.println("Вы ввели неправильное выражение");
             }

@@ -15,31 +15,26 @@ public class Calculator {
     }
 
     public int calculate() {
-        int value = 0;
-        switch (mathSign) {
-            case "+":
-                value = firstNumber + secondNumber;
-                break;
-            case "-":
-                value = firstNumber - secondNumber;
-                break;
-            case "*":
-                value = firstNumber * secondNumber;
-                break;
-            case "/":
-                value = firstNumber / secondNumber;
-                break;
-            case "^":
-                value = (int) Math.pow(firstNumber, secondNumber);
-                break;
-            case "%":
-                value = firstNumber % secondNumber;
-                break;
-            default:
-                System.out.println("Вы ввели неправильный знак математической операции");
-                break;
+        try {
+            switch (mathSign) {
+                case "+":
+                    return firstNumber + secondNumber;
+                case "-":
+                    return firstNumber - secondNumber;
+                case "*":
+                    return firstNumber * secondNumber;
+                case "/":
+                    return firstNumber / secondNumber;
+                case "^":
+                    return (int) Math.pow(firstNumber, secondNumber);
+                case "%":
+                    return firstNumber % secondNumber;
+                default:
+                    System.out.println("Вы ввели неправильный знак математической операции");
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("Деление на 0 запрещено");
         }
-        return value;
+        return 0;
     }
 }
-
