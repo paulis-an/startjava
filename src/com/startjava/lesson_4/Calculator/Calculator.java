@@ -6,8 +6,7 @@ public class Calculator {
     private String mathSign;
 
 
-    public Calculator(String mathExp) {
-        String mathExpression = mathExp;
+    public Calculator(String mathExpression) {
         String[] symbol = mathExpression.replaceAll(" ", "").split("[+, *, /, %, ^, -]");
         mathSign = mathExpression.replaceAll(" ", "").replaceAll("[0-9]", "");
         firstNumber = Integer.parseInt(symbol[0]);
