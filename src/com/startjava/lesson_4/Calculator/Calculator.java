@@ -1,4 +1,4 @@
-package com.startjava.lesson_4;
+package com.startjava.lesson_4.Calculator;
 
 public class Calculator {
     private int firstNumber;
