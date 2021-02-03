@@ -1,6 +1,5 @@
 package com.startjava.lesson_4.numbers;
 
-
 import java.util.Arrays;
 import java.util.Random;
 
