@@ -2,11 +2,11 @@ package com.startjava.lesson_4.numbers;
 
 public class Player {
     private String name;
-    private int[] numbers;
+    GuessNumber gn = new GuessNumber();
+    private int[] inputNumbers = gn.getInputNumbers().clone();
 
-    public Player(String name, int[] numbers) {
+    public Player(String name) {
         this.name = name;
-        this.numbers = numbers;
     }
 
     public String getName() {
@@ -14,6 +14,6 @@ public class Player {
     }
 
     public int[] getNumbers() {
-        return numbers;
+        return inputNumbers;
     }
 }
