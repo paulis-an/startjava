@@ -31,7 +31,6 @@ public class GuessNumber {
             if (number1 < 0 || number1 > 100) {
                 System.out.println("Вы ввели число вне указанного диапазона");
             }
-
         }
         System.out.println("Игрок " + player2.getName() + ", введите числа от 0 до 100. У вас 10 попыток");
         for (int i = 0; i < 10; i++) {
@@ -40,7 +39,6 @@ public class GuessNumber {
             if (number2 < 0 || number2 > 100) {
                 System.out.println("Вы ввели число вне указанного диапазона");
             }
-
         }
     }
 
