@@ -1,8 +1,9 @@
-package com.startjava.lesson_4.numbers;
+package com.startjava.lesson_4.game;
 /**
  * Lesson_4. Program "Guess number"
+ *
  * @author Pavel Anisimov
- * @version 1.1 04.02.2021
+ * @version 1.2 05.02.2021
  */
 
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class GuessNumberMain {
 
         while (answer.equals("да")) {
             System.out.println("Введите имя игрока №1");
-            String name1 = scan.nextLine();                                 // создаем Player и инициализируем его поля значением
+            String name1 = scan.nextLine();
             Player player1 = new Player(name1);
             System.out.println("Введите имя игрока №2");
             String name2 = scan.nextLine();
@@ -22,7 +23,8 @@ public class GuessNumberMain {
 
             GuessNumber game = new GuessNumber(player1, player2);
 
-            game.start();                                                   // запуск игры
+            // запуск игры
+            game.start();
             do {
                 System.out.println("Хотите продолжить игру? [да/нет]:");
                 answer = scan.nextLine();
