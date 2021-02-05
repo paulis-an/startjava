@@ -11,6 +11,10 @@ public class Player {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setNumbers1(int number, int position) {
         numbers1[position] = number;
     }
@@ -25,9 +29,5 @@ public class Player {
 
     public int[] getNumbers2() {
         return Arrays.copyOf(numbers2, numbers2.length);
-    }
-
-    public String getName() {
-        return name;
     }
 }
