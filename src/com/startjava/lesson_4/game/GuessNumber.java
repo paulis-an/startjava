@@ -15,52 +15,44 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    public void start() {
-        guessNumber = random.nextInt(101);
-        inputNumbers();
-        game();
+    public void start(Player player1, Player player2) {
+        guessNumber = random.nextInt(21);
+        play(player1);
+        play(player2);
+        compareGame();
     }
 
-    // метод ввода чисел
-    private void inputNumbers() {
+    public void play(Player player) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Игрок " + player1.getName() + ", введите числа от 0 до 100. У вас 10 попыток");
+        System.out.println("Игрок " + player.getName() + ", введите числа от 0 до 100. У вас 10 попыток");
         for (int i = 0; i < 10; i++) {
-            int number1 = scanner.nextInt();
-            player1.setNumbers1(number1, i);
-            if (number1 < 0 || number1 > 100) {
-                System.out.println("Вы ввели число вне указанного диапазона");
-            }
-        }
-        System.out.println("Игрок " + player2.getName() + ", введите числа от 0 до 100. У вас 10 попыток");
-        for (int i = 0; i < 10; i++) {
-            int number2 = scanner.nextInt();
-            player2.setNumbers2(number2, i);
-            if (number2 < 0 || number2 > 100) {
+            int number = scanner.nextInt();
+            player.setNumbers(number, i);
+            if (number < 0 || number > 100) {
                 System.out.println("Вы ввели число вне указанного диапазона");
             }
         }
     }
 
-    //метода проверки чисел игроков
-    public void game() {
-        for (int i = 0; i < player1.getNumbers1().length; i++) {
-            if (player1.getNumbers1()[i] == guessNumber) {
-                System.out.println("Игрок " + player1.getName() + " угадал число " + player1.getNumbers1()[i] + " с " + (i + 1) + " попытки");
-                System.out.println(Arrays.toString(Arrays.copyOf(player1.getNumbers1(), i + 1)));
+    //метод проверки чисел
+    public void compareGame() {
+        for (int i = 0; i < player1.getNumbers().length; i++) {
+            if (player1.getNumbers()[i] == guessNumber) {
+                System.out.println("Игрок " + player1.getName() + " угадал число " + player1.getNumbers()[i] + " с " + (i + 1) + " попытки");
+                System.out.println(Arrays.toString(Arrays.copyOf(player1.getNumbers(), i + 1)));
                 break;
-            } else if (player2.getNumbers2()[i] == guessNumber) {
-                System.out.println("Игрок " + player2.getName() + " угадал число " + player2.getNumbers2()[i] + " с " + (i + 1) + " попытки");
-                System.out.println(Arrays.toString(Arrays.copyOf(player2.getNumbers2(), i + 1)));
+            } else if (player2.getNumbers()[i] == guessNumber) {
+                System.out.println("Игрок " + player2.getName() + " угадал число " + player2.getNumbers()[i] + " с " + (i + 1) + " попытки");
+                System.out.println(Arrays.toString(Arrays.copyOf(player2.getNumbers(), i + 1)));
                 break;
-            } else if (i == player1.getNumbers1().length - 1) {
+            } else if (i == player1.getNumbers().length - 1) {
                 System.out.println("У " + player1.getName() + " закончились попытки");
                 System.out.println("У " + player2.getName() + " закончились попытки");
                 System.out.println("Загаданное число - " + guessNumber);
             }
         }
-        outputNumbers(player1.getNumbers1());
-        outputNumbers(player2.getNumbers2());
+        outputNumbers(player1.getNumbers());
+        outputNumbers(player2.getNumbers());
     }
 
     //метод вывода чисел введенных игроками
