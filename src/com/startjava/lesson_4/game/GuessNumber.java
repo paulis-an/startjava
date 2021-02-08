@@ -18,17 +18,16 @@ public class GuessNumber {
     void start() {
         guessNumber = random.nextInt(101);
         System.out.println("Введите числа от 0 до 100. У вас 10 попыток");
-        int index = 0;
-        for (int i = 0; i < 10; i++) {
-            index++;
-            inputNumber(player1, i);
-            checkNumber(player1, i);
-            if (guessNumber == player1.getNumber(i)) {
+        int index;
+        for (index = 0; index < 10; index++) {
+            inputNumber(player1, index);
+            checkNumber(player1, index);
+            if (guessNumber == player1.getNumber(index)) {
                 break;
             }
-            inputNumber(player2, i);
-            checkNumber(player2, i);
-            if (guessNumber == player1.getNumber(i)) {
+            inputNumber(player2, index);
+            checkNumber(player2, index);
+            if (guessNumber == player2.getNumber(index)) {
                 break;
             }
         }
@@ -37,8 +36,8 @@ public class GuessNumber {
             endGame(player2, index);
         }
         System.out.println("Загаданное число - " + guessNumber);
-        player1.resetArray(index - 1);
-        player2.resetArray(index - 1);
+        player1.resetArray(index);
+        player2.resetArray(index);
     }
 
     private void inputNumber(Player player, int index) {
