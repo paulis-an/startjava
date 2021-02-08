@@ -21,6 +21,7 @@ public class Player {
     public int[] getNumbers(int index) {
         return Arrays.copyOf(numbers, index);
     }
+
     public int getNumber(int index) {
         return numbers[index];
     }

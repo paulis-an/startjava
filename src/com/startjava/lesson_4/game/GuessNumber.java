@@ -21,13 +21,13 @@ public class GuessNumber {
         int index = 0;
         for (int i = 0; i < 10; i++) {
             index++;
-            inputNumbers(player1, i);
-            checkNumber(player1.getNumber(i), player1, i);
+            inputNumber(player1, i);
+            checkNumber(player1, i);
             if (guessNumber == player1.getNumber(i)) {
                 break;
             }
-            inputNumbers(player2, i);
-            checkNumber(player2.getNumber(i), player2, i);
+            inputNumber(player2, i);
+            checkNumber(player2, i);
             if (guessNumber == player1.getNumber(i)) {
                 break;
             }
@@ -41,24 +41,21 @@ public class GuessNumber {
         player2.resetArray(index - 1);
     }
 
-    private void inputNumbers(Player player, int index) {
+    private void inputNumber(Player player, int index) {
         System.out.println("Попытка " + (index + 1) + " игрока " + player.getName());
         int number = new Scanner(System.in).nextInt();
-        if (number < 0 || number > 100) {
+        if (number < 1 || number > 100) {
             System.out.println("Вы ввели число вне указанного диапазона");
         }
         player.setNumber(number, index);
     }
 
-    private void checkNumber(int number, Player player, int index) {
-        if (number == guessNumber) {
-            System.out.println("Игрок " + player.getName() + " угадал число " + number + " с " + (index + 1) + " попытки");
+    private void checkNumber(Player player, int index) {
+        if (player.getNumber(index) == guessNumber) {
+            System.out.println("Игрок " + player.getName() + " угадал число " + player.getNumber(index) + " с " + (index + 1) + " попытки");
             System.out.println(Arrays.toString(player.getNumbers(index + 1)));
-        } else if (number > guessNumber) {
-            System.out.println("Введенное вами число больше того, что загадал компьютер");
-        } else {
-            System.out.println("Введенное вами число меньше того, что загадал компьютер");
-        }
+        } else
+            System.out.println((player.getNumber(index) > guessNumber ? "Введенное вами число больше того, что загадал компьютер" : "Введенное вами число меньше того, что загадал компьютер"));
     }
 
     private void outputNumbers(int[] numbers) {

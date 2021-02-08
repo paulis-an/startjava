@@ -3,7 +3,7 @@ package com.startjava.lesson_4.game;
  * Lesson_4. Program "Guess number"
  *
  * @author Pavel Anisimov
- * @version 1.5 08.02.2021
+ * @version 1.5.1 08.02.2021
  */
 
 import java.util.Scanner;
