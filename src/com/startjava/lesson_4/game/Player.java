@@ -19,10 +19,13 @@ public class Player {
     }
 
     public int[] getNumbers(int index) {
-        return Arrays.copyOf(numbers, index + 1);
+        return Arrays.copyOf(numbers, index);
+    }
+    public int getNumber(int index) {
+        return numbers[index];
     }
 
-    public void resetArray(int index2) {
-        Arrays.fill(numbers, 0, index2, 0);
+    public void resetArray(int index) {
+        Arrays.fill(numbers, 0, index, 0);
     }
 }

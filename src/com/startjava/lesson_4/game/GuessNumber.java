@@ -15,57 +15,62 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    public void start() {
-        guessNumber = random.nextInt(21);
-        Scanner scanner = new Scanner(System.in);
+    void start() {
+        guessNumber = random.nextInt(101);
         System.out.println("Введите числа от 0 до 100. У вас 10 попыток");
         int index = 0;
         for (int i = 0; i < 10; i++) {
             index++;
-            System.out.println("Попытка " + (i + 1) + " игрока " + player1.getName());
-            int number1 = scanner.nextInt();
-            compareNumbers(number1);
-            player1.setNumber(number1, i);
-            if (number1 == guessNumber) {
-                System.out.println("Игрок " + player1.getName() + " угадал число " + number1 + " с " + index + " попытки");
-                System.out.println(Arrays.toString(player1.getNumbers(i)));
+            inputNumbers(player1, i);
+            checkNumber(player1.getNumber(i), player1, i);
+            if (guessNumber == player1.getNumber(i)) {
                 break;
-            } else if (i == 9) {
-                System.out.println("У " + player1.getName() + " закончились попытки");
-                outputNumbers(player1.getNumbers(index - 1));
             }
-
-            System.out.println("Попытка " + (i + 1) + " игрока " + player2.getName());
-            int number2 = scanner.nextInt();
-            compareNumbers(number2);
-            player2.setNumber(number2, i);
-            if (number2 == guessNumber) {
-                System.out.println("Игрок " + player2.getName() + " угадал число " + number2 + " с " + index + " попытки");
-                System.out.println(Arrays.toString(player2.getNumbers(i)));
+            inputNumbers(player2, i);
+            checkNumber(player2.getNumber(i), player2, i);
+            if (guessNumber == player1.getNumber(i)) {
                 break;
-            } else if (i == 9) {
-                System.out.println("У " + player2.getName() + " закончились попытки");
-                outputNumbers(player2.getNumbers(index - 1));
-                System.out.println("Загаданное число - " + guessNumber);
             }
         }
-        player1.resetArray(index);
-        player2.resetArray(index);
+        if (index == 10 && player1.getNumber(index - 1) != guessNumber && player2.getNumber(index - 1) != guessNumber) {
+            endGame(player1, index);
+            endGame(player2, index);
+        }
+        System.out.println("Загаданное число - " + guessNumber);
+        player1.resetArray(index - 1);
+        player2.resetArray(index - 1);
     }
 
-    //метод проверки чисел
-    public void compareNumbers(int number) {
+    private void inputNumbers(Player player, int index) {
+        System.out.println("Попытка " + (index + 1) + " игрока " + player.getName());
+        int number = new Scanner(System.in).nextInt();
         if (number < 0 || number > 100) {
             System.out.println("Вы ввели число вне указанного диапазона");
         }
+        player.setNumber(number, index);
     }
 
-    //метод вывода чисел введенных игроками
-    void outputNumbers(int[] numbers) {
+    private void checkNumber(int number, Player player, int index) {
+        if (number == guessNumber) {
+            System.out.println("Игрок " + player.getName() + " угадал число " + number + " с " + (index + 1) + " попытки");
+            System.out.println(Arrays.toString(player.getNumbers(index + 1)));
+        } else if (number > guessNumber) {
+            System.out.println("Введенное вами число больше того, что загадал компьютер");
+        } else {
+            System.out.println("Введенное вами число меньше того, что загадал компьютер");
+        }
+    }
+
+    private void outputNumbers(int[] numbers) {
         for (int number : numbers) {
             System.out.print(number + " ");
         }
         System.out.println();
+    }
+
+    private void endGame(Player player, int index) {
+        System.out.println("У " + player.getName() + " закончились попытки");
+        outputNumbers(player.getNumbers(index));
     }
 }
 

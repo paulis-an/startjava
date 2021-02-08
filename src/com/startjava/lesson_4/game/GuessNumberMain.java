@@ -3,7 +3,7 @@ package com.startjava.lesson_4.game;
  * Lesson_4. Program "Guess number"
  *
  * @author Pavel Anisimov
- * @version 1.4 05.02.2021
+ * @version 1.5 08.02.2021
  */
 
 import java.util.Scanner;
@@ -21,7 +21,6 @@ public class GuessNumberMain {
 
             GuessNumber game = new GuessNumber(player1, player2);
 
-            // запуск игры
             game.start();
             do {
                 System.out.println("Хотите продолжить игру? [да/нет]:");
