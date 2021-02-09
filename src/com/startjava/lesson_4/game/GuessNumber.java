@@ -1,6 +1,5 @@
 package com.startjava.lesson_4.game;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,43 +17,49 @@ public class GuessNumber {
     void start() {
         guessNumber = random.nextInt(101);
         System.out.println("Введите числа от 0 до 100. У вас 10 попыток");
-        int index;
-        for (index = 0; index < 10; index++) {
-            inputNumber(player1, index);
-            checkNumber(player1, index);
-            if (guessNumber == player1.getNumber(index)) {
+        int attempt;
+        for (attempt = 0; attempt < 10; attempt++) {
+            inputNumber(player1, attempt);
+            if (checkNumber(player1, attempt)) {
+                outputNumbers(player1.getNumbers(attempt + 1));
                 break;
             }
-            inputNumber(player2, index);
-            checkNumber(player2, index);
-            if (guessNumber == player2.getNumber(index)) {
+            inputNumber(player2, attempt);
+            if (checkNumber(player2, attempt)) {
+                outputNumbers(player2.getNumbers(attempt + 1));
                 break;
             }
         }
-        if (index == 10 && player1.getNumber(index - 1) != guessNumber && player2.getNumber(index - 1) != guessNumber) {
-            endGame(player1, index);
-            endGame(player2, index);
+        if (attempt == 10) {
+            System.out.println("У " + player1.getName() + " закончились попытки");
+            outputNumbers(player1.getNumbers(attempt));
+            System.out.println("У " + player2.getName() + " закончились попытки");
+            outputNumbers(player2.getNumbers(attempt));
+            System.out.println("Загаданное число - " + guessNumber);
         }
-        System.out.println("Загаданное число - " + guessNumber);
-        player1.resetArray(index);
-        player2.resetArray(index);
+        player1.resetArray(attempt);
+        player2.resetArray(attempt);
     }
 
     private void inputNumber(Player player, int index) {
         System.out.println("Попытка " + (index + 1) + " игрока " + player.getName());
         int number = new Scanner(System.in).nextInt();
-        if (number < 1 || number > 100) {
+        if (number < 0 || number > 100) {
             System.out.println("Вы ввели число вне указанного диапазона");
         }
         player.setNumber(number, index);
     }
 
-    private void checkNumber(Player player, int index) {
+    private boolean checkNumber(Player player, int index) {
         if (player.getNumber(index) == guessNumber) {
             System.out.println("Игрок " + player.getName() + " угадал число " + player.getNumber(index) + " с " + (index + 1) + " попытки");
-            System.out.println(Arrays.toString(player.getNumbers(index + 1)));
-        } else
-            System.out.println((player.getNumber(index) > guessNumber ? "Введенное вами число больше того, что загадал компьютер" : "Введенное вами число меньше того, что загадал компьютер"));
+            return true;
+        } else {
+            String numberUp = "Введенное вами число больше того, что загадал компьютер";
+            String numberDown = "Введенное вами число меньше того, что загадал компьютер";
+            System.out.println((player.getNumber(index) > guessNumber ? numberUp : numberDown));
+            return false;
+        }
     }
 
     private void outputNumbers(int[] numbers) {
@@ -62,11 +67,6 @@ public class GuessNumber {
             System.out.print(number + " ");
         }
         System.out.println();
-    }
-
-    private void endGame(Player player, int index) {
-        System.out.println("У " + player.getName() + " закончились попытки");
-        outputNumbers(player.getNumbers(index));
     }
 }
 
