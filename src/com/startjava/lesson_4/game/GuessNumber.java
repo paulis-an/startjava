@@ -18,25 +18,26 @@ public class GuessNumber {
         guessNumber = random.nextInt(101);
         System.out.println("Введите числа от 0 до 100. У вас 10 попыток");
         int attempt;
-        for (attempt = 0; attempt < 10; attempt++) {
+        int maxNumberAttempt = 10;
+        for (attempt = 0; attempt < maxNumberAttempt; attempt++) {
             inputNumber(player1, attempt);
             if (checkNumber(player1, attempt)) {
-                outputNumbers(player1.getNumbers(attempt + 1));
+                attempt++;
                 break;
             }
             inputNumber(player2, attempt);
             if (checkNumber(player2, attempt)) {
-                outputNumbers(player2.getNumbers(attempt + 1));
+                attempt++;
                 break;
             }
         }
-        if (attempt == 10) {
+        if (attempt == maxNumberAttempt) {
             System.out.println("У " + player1.getName() + " закончились попытки");
-            outputNumbers(player1.getNumbers(attempt));
             System.out.println("У " + player2.getName() + " закончились попытки");
-            outputNumbers(player2.getNumbers(attempt));
             System.out.println("Загаданное число - " + guessNumber);
         }
+        outputNumbers(player1.getNumbers(attempt));
+        outputNumbers(player2.getNumbers(attempt));
         player1.resetArray(attempt);
         player2.resetArray(attempt);
     }
@@ -55,9 +56,8 @@ public class GuessNumber {
             System.out.println("Игрок " + player.getName() + " угадал число " + player.getNumber(index) + " с " + (index + 1) + " попытки");
             return true;
         } else {
-            String numberUp = "Введенное вами число больше того, что загадал компьютер";
-            String numberDown = "Введенное вами число меньше того, что загадал компьютер";
-            System.out.println((player.getNumber(index) > guessNumber ? numberUp : numberDown));
+            String s = player.getNumber(index) > guessNumber ? "больше" : "меньше";
+            System.out.println("Введенное вами число " + s + " того, что загадал компьютер");
             return false;
         }
     }
@@ -69,5 +69,3 @@ public class GuessNumber {
         System.out.println();
     }
 }
-
-
