@@ -18,7 +18,7 @@ public class GuessNumber {
         guessNumber = random.nextInt(101);
         System.out.println("Введите числа от 0 до 100. У вас 10 попыток");
         int attempt;
-        int maxNumberAttempt = 10;
+        final int maxNumberAttempt = 10;
         for (attempt = 0; attempt < maxNumberAttempt; attempt++) {
             inputNumber(player1, attempt);
             if (checkNumber(player1, attempt)) {
